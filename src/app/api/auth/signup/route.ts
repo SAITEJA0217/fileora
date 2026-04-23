@@ -37,7 +37,13 @@ export async function POST(request: Request) {
       }, { status: 400 });
     }
 
-    user = new User({ name, email, password });
+    const ADMIN_EMAILS = ['ksrsaitej@gmail.com'];
+    user = new User({ 
+      name, 
+      email, 
+      password,
+      isAdmin: ADMIN_EMAILS.includes(email.toLowerCase())
+    });
     await user.save();
 
     const token = jwt.sign(
