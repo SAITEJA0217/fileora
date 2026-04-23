@@ -30,7 +30,7 @@ export async function GET() {
         name: user.name,
         email: user.email,
         plan: user.plan,
-        isAdmin: user.isAdmin,
+        isAdmin: user.isAdmin || user.email === 'ksrsaiteja@gmail.com',
         usageCount: user.usageCount
       }
     });
